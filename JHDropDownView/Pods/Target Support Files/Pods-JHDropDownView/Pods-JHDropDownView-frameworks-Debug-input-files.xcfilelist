@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/Pods-JHDropDownView/Pods-JHDropDownView-frameworks.sh
+${BUILT_PRODUCTS_DIR}/EasyShowView/EasyShowView.framework
+${BUILT_PRODUCTS_DIR}/JHToolsModule/JHToolsModule.framework
+${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework
+${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
