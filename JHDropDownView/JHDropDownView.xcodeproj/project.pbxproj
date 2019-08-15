@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -56,7 +56,6 @@
 				4C695685EAAF8D1F88C4F8EB /* Pods-JHDropDownView.debug.xcconfig */,
 				F700AC084AA61ADA89324B5F /* Pods-JHDropDownView.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
