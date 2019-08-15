@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "UIView+JHFrame.h"
-NS_ASSUME_NONNULL_BEGIN
 
 @interface JHDropDownView : UIView
 + (instancetype)dropDown;
@@ -26,5 +25,3 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (void)hideDropDown;
 @end
-
-NS_ASSUME_NONNULL_END
