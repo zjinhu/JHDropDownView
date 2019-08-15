@@ -7,6 +7,8 @@
 //
 
 #import "JHDropDownView.h"
+
+static const CGFloat animationTime = 0.25;
 static JHDropDownView   *_dropDown;       // 遮罩
 static UIView           *_fromView;       // 显示在此视图上
 static UIView           *_contentView;    // 显示的视图
@@ -14,6 +16,7 @@ static dispatch_block_t _showBlock;       // 显示时的回调block
 static dispatch_block_t _hideBlock;       // 隐藏时的回调block
 static BOOL             _canClick;        // 是否能点击的判断
 static BOOL             _hasDropDown;        // 遮罩是否已经显示的判断值
+
 @implementation JHDropDownView
 
 - (instancetype)init{
@@ -67,7 +70,7 @@ static BOOL             _hasDropDown;        // 遮罩是否已经显示的判�
     _contentView.jh_centerX = _fromView.jh_centerX;
     _contentView.jh_top = -_contentView.jh_height;
     
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:animationTime animations:^{
         _contentView.jh_top = 0;
     }completion:^(BOOL finished) {
         !_showBlock ? : _showBlock();
@@ -78,13 +81,14 @@ static BOOL             _hasDropDown;        // 遮罩是否已经显示的判�
     // 这里为了防止动画未完成导致的不能及时判断cover是否存在，实际上cover再这里并没有销毁
     _hasDropDown = NO;
     
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:animationTime animations:^{
         _contentView.jh_top = -_contentView.jh_height;
     }completion:^(BOOL finished) {
         [self remove];
     }];
     
 }
+
 + (void)remove{
     [_dropDown removeFromSuperview];
     [_contentView removeFromSuperview];
