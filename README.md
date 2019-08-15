@@ -1,5 +1,6 @@
 # JHDropDownView
 
+![](Kapture 2019-08-15 at 10.23.55.gif)
 ```
 ##  安装
 ### 1.手动添加:<br>
