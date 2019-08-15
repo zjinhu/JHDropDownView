@@ -1,5 +1,6 @@
 # JHDropDownView
 
+<!--![example.gif](https://github.com/jackiehu/JHDropDownView/blob/master/Kapture%202019-08-15%20at%2010.23.55.gif)-->
 ```
 ##  安装
 ### 1.手动添加:<br>
