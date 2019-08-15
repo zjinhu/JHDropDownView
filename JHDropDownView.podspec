@@ -1,7 +1,7 @@
  
 Pod::Spec.new do |s|
   s.name             = 'JHDropDownView'
-  s.version          = '0.2.0'
+  s.version          = '0.3.0'
   s.summary          = '下拉菜单.'
  
   s.description      = <<-DESC
