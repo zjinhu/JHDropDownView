@@ -15,7 +15,7 @@ static UIView           *_contentView;    // 显示的视图
 static dispatch_block_t _showBlock;       // 显示时的回调block
 static dispatch_block_t _hideBlock;       // 隐藏时的回调block
 static BOOL             _canClick;        // 是否能点击的判断
-static BOOL             _hasDropDown;        // 遮罩是否已经显示的判断值
+static BOOL             _hasDropDown;     // 遮罩是否已经显示的判断值
 
 @implementation JHDropDownView
 
