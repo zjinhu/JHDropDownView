@@ -14,6 +14,8 @@ static UIView           *_fromView;       // 显示在此视图上
 static UIView           *_contentView;    // 显示的视图
 static dispatch_block_t _showBlock;       // 显示时的回调block
 static dispatch_block_t _hideBlock;       // 隐藏时的回调block
+static dispatch_block_t _willShowBlock;   // 显示时的回调block
+static dispatch_block_t _willHideBlock;   // 隐藏时的回调block
 static BOOL             _canClick;        // 是否能点击的判断
 static BOOL             _hasDropDown;     // 遮罩是否已经显示的判断值
 
@@ -36,8 +38,29 @@ static BOOL             _hasDropDown;     // 遮罩是否已经显示的判断�
 + (void)coverTabbar:(UIView *)contentView
               fromY:(CGFloat)fromY
            canClick:(BOOL)canClick
+      willShowBlock:(dispatch_block_t)willShowBlock
+      willHideBlock:(dispatch_block_t)willHideBlock{
+    [self coverTabbar:contentView fromY:fromY canClick:canClick willShowBlock:willShowBlock willHideBlock:willHideBlock showBlock:nil hideBlock:nil];
+}
+
++ (void)coverTabbar:(UIView *)contentView
+              fromY:(CGFloat)fromY
+           canClick:(BOOL)canClick
           showBlock:(dispatch_block_t)showBlock
           hideBlock:(dispatch_block_t)hideBlock{
+    
+    [self coverTabbar:contentView fromY:fromY canClick:canClick willShowBlock:nil willHideBlock:nil showBlock:showBlock hideBlock:hideBlock];
+
+}
+
++ (void)coverTabbar:(UIView *)contentView
+        fromY:(CGFloat)fromY
+     canClick:(BOOL)canClick
+willShowBlock:(dispatch_block_t)willShowBlock
+willHideBlock:(dispatch_block_t)willHideBlock
+    showBlock:(dispatch_block_t)showBlock
+    hideBlock:(dispatch_block_t)hideBlock{
+    
     if ([self hasDropDown]) return;
     
     UIView *coverView = [UIView new];
@@ -49,6 +72,9 @@ static BOOL             _hasDropDown;     // 遮罩是否已经显示的判断�
     _fromView      = coverView;
     _contentView   = contentView;
     _canClick     = canClick;
+    
+    _willShowBlock = willShowBlock;
+    _willHideBlock = willHideBlock;
     _showBlock     = showBlock;
     _hideBlock     = hideBlock;
     
@@ -66,6 +92,7 @@ static BOOL             _hasDropDown;     // 遮罩是否已经显示的判断�
 }
 
 + (void)showDropDown {
+    !_willShowBlock ? : _willShowBlock();
     [_fromView addSubview:_contentView];
     _contentView.jh_centerX = _fromView.jh_centerX;
     _contentView.jh_top = -_contentView.jh_height;
@@ -78,6 +105,7 @@ static BOOL             _hasDropDown;     // 遮罩是否已经显示的判断�
 }
 
 + (void)hideDropDown {
+    !_willHideBlock ? : _willHideBlock();
     // 这里为了防止动画未完成导致的不能及时判断cover是否存在，实际上cover再这里并没有销毁
     _hasDropDown = NO;
     
